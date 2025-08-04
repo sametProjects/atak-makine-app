@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: atak-makine-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: atak_makine_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_password_here
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - atak-makine-network
+
+volumes:
+  postgres_data:
+
+networks:
+  atak-makine-network:
+    driver: bridge
