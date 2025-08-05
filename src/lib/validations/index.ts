@@ -7,7 +7,7 @@ export const categorySchema = z.object({
     .min(2, 'Kategori adı en az 2 karakter olmalıdır')
     .max(50, 'Kategori adı en fazla 50 karakter olabilir')
     .trim(),
-  isActive: z.boolean().default(true)
+  isActive: z.boolean()
 })
 
 // Ürün validation şeması  
