@@ -7,8 +7,18 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Para formatı için
-export function formatPrice(price: number | string): string {
-  const numPrice = typeof price === 'string' ? parseFloat(price) : price
+export function formatPrice(price: number | string | { toString(): string }): string {
+  let numPrice: number
+  
+  if (typeof price === 'number') {
+    numPrice = price
+  } else if (typeof price === 'string') {
+    numPrice = parseFloat(price)
+  } else {
+    // Prisma Decimal tipini handle et
+    numPrice = parseFloat(price.toString())
+  }
+  
   return new Intl.NumberFormat('tr-TR', {
     style: 'currency',
     currency: 'TRY',

@@ -33,7 +33,7 @@ export const productSchema = z.object({
   categoryId: z
     .string()
     .min(1, 'Kategori seçimi zorunludur'),
-  isActive: z.boolean().default(true)
+  isActive: z.boolean()
 })
 
 // API parametreleri için validation

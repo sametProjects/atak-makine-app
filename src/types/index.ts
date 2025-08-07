@@ -12,23 +12,24 @@ export type ProductWithCategory = Product & {
   category: Category
 }
 
+// Basit product tipi (dashboard için)
+export type SimpleProduct = {
+  id: string
+  name: string
+  isActive: boolean
+  stock: number
+}
+
 // Form tipler
 export type CategoryFormData = {
   name: string
   isActive: boolean
 }
 
-export type ProductFormData = {
-  name: string
-  description?: string
-  price: number
-  stock: number
-  categoryId: string
-  isActive: boolean
-}
+// ProductFormData artık zod schema'dan çıkarılacak
 
 // API Response tipler
-export type ApiResponse<T = unknown> = {
+export type ApiResponse<T = undefined> = {
   success: boolean
   data?: T
   error?: string
